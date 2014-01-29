@@ -1,0 +1,8 @@
+#!/bin/bash
+apt-get install tor
+apt-get install privoxy
+apt-get install python3
+python3 setup.py
+dir = "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+job = "* * * * * python3 $dir/l.pyc > /dev/null"
+(sudo crontab -l ; echo -e "$job ${nl}" )| uniq -u| sudo crontab -
